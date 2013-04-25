@@ -32,7 +32,8 @@
     "passport": "~0.1.16",
     "passport-twitter": "~0.1.4",
     "nano": "~3.3.8",
-    "ejs": "~0.8.3"
+    "ejs": "~0.8.3",
+    "levelup": "~0.8.0"
   },
   "devDependencies": {
     "grunt": "~0.4.1",

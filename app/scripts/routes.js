@@ -1,7 +1,8 @@
 App.Router.map(function(){
-  // this.resource('items', function (){
-  //   this.resource('item', {path: ':item_id'});
-  // });
+  this.resource('incomes')
+  this.resource('outcomes')
+  this.resource('all')
+  this.resource('item')
 });
 
 // App.IndexRoute = Em.Route.extend({
