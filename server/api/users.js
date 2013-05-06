@@ -5,22 +5,26 @@ var cache = {}
 
 // structures ;_; lol
 var Item = Structure({
-  'id': 'string',
-  'type': ['income', 'outcome'],
-  'description': 'string',
-  'value': 'number',
-  'date': 'date'
+  id: 'string',
+  type: ['income', 'outcome'],
+  description: 'string',
+  value: 'number',
+  date: 'date'
 })
 var User = Structure({
+  token: 'string',
+  tokenSecret: 'string',
   name: 'string',
   id: 'string',
   last_seen: 'date',
   img: 'string',
   items: [Item],
-  last_item: Item
+  last_item: Item,
+  keepStructure: false
 })
 
 var api = module.exports = {
+  User: User,
   create: function (user, cb){
     if (!User.isValid(user)) return cb(new TypeError('user is not valid'))
     api.exists(user, function (err, exists){

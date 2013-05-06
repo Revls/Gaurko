@@ -6,14 +6,18 @@ module.exports = function(grunt) {
   // Project configuration.
   grunt.initConfig({
     watch:{
-       ember_templates: {
-         files: 'app/templates/**/*.hbs',
-         tasks: ['ember_templates']
-       },
-       js: {
+      ember_templates: {
+       files: 'app/templates/**/*.hbs',
+       tasks: ['ember_templates']
+      },
+      js: {
         files: 'app/scripts/**/*.js',
         tasks: ['concat:dist']
-       }
+      },
+      css: {
+        files: 'app/css/**/*.css',
+        tasks: ['concat:css']
+      }
     },
     ember_templates:{
       compile: {
@@ -21,7 +25,7 @@ module.exports = function(grunt) {
           templateName: function (sourceFile) {
             return sourceFile.replace(/app\/templates\//, '')
                              .replace(/\.hbs$/, '')
-                             .replace(/\_/, '/')
+                             .replace(/(?!^_)(_)(?=_|\w){1}?/g, '/')
           }
         },
         files: {
@@ -34,12 +38,26 @@ module.exports = function(grunt) {
         separator: ';'
       },
       dist: {
+        options: {
+          banner: '!function(){"use strict";\n',
+          footer: '}()'
+        },
         src: ['app/scripts/app.js','app/scripts/**/*.js', '!app/scripts/templates.js'],
-        dest: 'app/build/Finanzas.js'
+        dest: 'app/build/gaurko.js'
       },
       all:{
         src: ['app/vendor/**/*.js', 'app/scripts/**/*.js'],
-        dest: 'app/build/Finanzas-all.js'
+        dest: 'app/build/gaurko-all.js'
+      },
+      css: {
+        options: {
+          separator: ''
+        },
+        src: ['app/css/tuktuk.css',
+          'app/css/tuktuk.icons.css',
+          'app/css/tuktuk.theme.css',
+          'app/css/**/*.css'],
+        dest: 'app/build/gaurko.css'
       }
     }
   })

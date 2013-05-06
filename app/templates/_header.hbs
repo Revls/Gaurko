@@ -1,0 +1,13 @@
+{{#if authorized}}
+<header class="bck light">
+  <h1 class="on-left text small bold"> {{currentUser.username}}
+    <span class="tag bck theme"> welcome</span>
+  </h1>
+  <nav class="on-right">
+      <button class="small icon plus" >Item</button>
+  </nav>
+</header>
+{{else}}
+<header class="bck light">
+</header>
+{{/if}}

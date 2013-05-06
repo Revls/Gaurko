@@ -1,6 +1,6 @@
 var passport = require('passport')
   , Strategy = require('passport-twitter').Strategy
-  , users = require('./api/users')
+  // , users = require('./api/users')
 module.exports = function (){
   var users = {}
   passport.use(new Strategy({
@@ -12,7 +12,6 @@ module.exports = function (){
       profile.token = token
       profile.tokenSecret = tokenSecret
       if (!users[profile.username]) users[profile.username] = profile
-      users.create(users.clean(profile))
       done(null, profile)
     }
   ))

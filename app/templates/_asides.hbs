@@ -1,0 +1,34 @@
+<aside id="menu" class="bck dark column_3">
+  <header class="text center bck color">
+    <h1 class="on-left text bold">Gaurko
+      <span class="tag bck theme"> Eta</span>
+    </h1>
+    <a href="#" class="on-right text big icon cog" data-tuktuk-box="menu"></a>
+  </header>
+  
+  <article class="scroll">
+    {{#if authorized}}
+      <div class="margin-left margin-right">
+        <img {{bindAttr src="currentUser.img" }} class="responsive padding-left padding-top padding-right"/>
+
+        <h4 class="text bold color theme inline">Balance</h4>
+        <span class="margin-left tag bck color inline text bold">monthly</span>
+        <ul class="margin" data-tuktuk="totals">
+          
+          <li><strong>138</strong><small>outcomes</small></li>
+          <li><strong>14</strong><small>incomes</small></li>
+          <li class="text color red"><strong>3609</strong><small>total</small></li>
+        </ul>
+      </div>
+    {{else}}
+      <div class="margin">
+        <strong class="text big normal block ">About <a href="/">Gaurko</a></strong>
+        <div class="display block  text justify small">Gaurko means "today" in
+          <small>euskera</small>, so this app helps you run your daily finances,
+          and it gives you monthly reports for your incomes and/or outcomes.
+        </div>
+      </div>
+    {{/if}}
+  </article>
+  
+</aside>

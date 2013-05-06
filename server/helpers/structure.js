@@ -5,7 +5,7 @@ function Structure(structure){
   if ('keepStructure' in structure) {
     this.keepStructure = structure.keepStructure
     delete structure.keepStructure
-  } else this.keepStructure = false
+  } else this.keepStructure = true
   if (structure) this.structure = structure
   if (this.init) this.init()
 }
@@ -35,7 +35,7 @@ Structure.prototype.check = function(item) {
     , nlength = nkeys.length
     , valid
 
-  if (nlength > slength && !this.keepStructure) throw new Error('you can not have more data than structure')
+  if (nlength > slength && this.keepStructure) throw new Error('you can not have more data than structure')
 
   function filterKey(key){
     var type = struct[key]

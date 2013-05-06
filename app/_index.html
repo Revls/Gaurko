@@ -1,8 +1,7 @@
 <html>
 <head>
   <title>Finanzas</title>
-  <link rel="stylesheet" type="text/css" href="/css/normalize.css">
-  <link rel="stylesheet" type="text/css" href="/css/style.css">
+  <link rel="stylesheet" type="text/css" href="/build/gaurko.css">
   <% if (typeof user !== 'undefined'){ %>
   <meta name="ttoken" content="<%=user.token%>">
   <meta name="tuser" content="<%=user.username%>">
@@ -10,7 +9,7 @@
   <meta name="timg" content="<%=user._json.profile_image_url%>">
   <% } %>
 </head>
-<body>
+<body role="main" data-tuktuk="boxes" id="gaurko">
   <!--[if lt IE 9]>
       <script src="/vendor/jquery-1.9.1.js"></script>
   <![endif]-->
@@ -20,6 +19,7 @@
 
   <script type="text/javascript" src="/vendor/handlebars-1.0.0-rc.3.js"></script>
   <script type="text/javascript" src="/vendor/ember-1.0.0-rc.3.js"></script>
+  <script type="text/javascript" src="/vendor/tuktuk.js"></script>
   <!-- Ember Data
   <script src="http://builds.emberjs.com.s3.amazonaws.com/ember-data-latest.js"></script>
    -->
@@ -30,9 +30,9 @@
   // with Ember, jquery, all `grunt concat:all`
   -->
   
-  <script type="text/javascript" src="/build/Finanzas.js"></script>
+  <script type="text/javascript" src="/build/gaurko.js"></script>
   <!-- 
-  <script type="text/javascript" src="/build/Finanzas-all.js"></script>
+  <script type="text/javascript" src="/build/gaurko-all.js"></script>
   -->
 </body>
 </html>

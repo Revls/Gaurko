@@ -1,43 +1,12 @@
 /* Put your CSS here */
-@import url("http://fonts.googleapis.com/css?family=Lato:400,700,900,400,italic");
-h1 .logo {
-  font-family: Lato;
-  font-weight: 900;
-  color: gray;
-  position: fixed;
-  font-size: 60px;
-  text-align: center;
-  margin-left: 120px;
-  border-bottom: 2px dashed gray;
-  border-top: 2px dashed gray;
-  margin-top: 22%;
-  padding-bottom: 4px;
-  
-}
-html, body {
-  margin: 20px;
-  font-family: Lato;
-}
-.wrapper {
-  width: 600px;
-  margin: 0 auto;
-}
 
-header {
-  display: block;
-  text-align: center;
+.full {
+  height: 100%;
+  width: 100%;
 }
-
-header h1 {
-  margin-bottom: 0px;
+.lowc {
+  background-color: #ECF0F1
 }
-
-.left {
-  width: 200px;
-  display: inline-block;
+section.padding.top {
+  padding-top: 15%
 }
-.right {
-  width: 300px;
-  display: inline-block;
-}
-
