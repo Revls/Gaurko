@@ -6,6 +6,7 @@
  */ 'use strict';
 
 var http = require('http')
+  , fs = require('fs')
   , express = require('express')
   , OAuth = require('./oauth')
 
@@ -14,6 +15,7 @@ var http = require('http')
 var app = express()
   , auth = OAuth()
   , html = require('./html')
+  , version = fs.readFileSync('./.commit').toString().replace('\n', '')
   // , json = require('./data.json')
 
 /* Default configuration */
@@ -26,6 +28,9 @@ app.engine('html', require('ejs').renderFile)
 app.set('view engine', 'html')
 app.set('views', __dirname + '/../app')
 app.use(express.static(__dirname + '/../app'))
+app.use(function (req, res, next){ if (req.session){
+  req.session.pkg = { commit: version }; next()
+}})
 app.set('port', process.env.PORT || 8080)
 app.set('name', 'Finanzas')
 

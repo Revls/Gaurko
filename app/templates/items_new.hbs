@@ -1,0 +1,44 @@
+<form id="form" name="form" class="margin-top">
+  <label>Title</label>
+  {{input value=title}}
+
+  <fieldset>
+    <label>type:<small>Select option</small></label>
+    <span class="select">
+      {{view Ember.Select
+        contentBinding="Gaurko.ItemType.content"
+        valueBinding="Gaurko.ItemType.selected"
+      }}
+    </span>
+  </fieldset>
+
+  <fieldset>
+      <label>Amount:<small>in $USD</small></label>
+      {{input value=amount type="number" name="amount" id="amount"}}
+  </fieldset>
+
+  <fieldset>
+      <label>Date:<small>Comments here</small></label>
+      {{view Gaurko.CalendarView valueBinding=selected}}
+  </fieldset>
+
+  <fieldset>
+      <label>Switches<small>Touch lover</small></label>
+      <div data-control="checkbox">
+          <input type="checkbox" value="None" id="prueba">
+          <label for="prueba"></label>
+      </div>
+  </fieldset>
+
+  <fieldset>
+      <label>Radio<small>buttons</small></label>
+      <input type="radio" name="radio1"><span>Yes</span>
+      <input type="radio" name="radio2" disabled=""><span>No</span>
+  </fieldset>
+
+  <fieldset>
+      <label>Checkbox:<small>Styled</small></label>
+      <input type="checkbox" name="radio1"><span>One</span>
+      <input type="checkbox" name="radio2"><span>Two</span>
+  </fieldset>
+</form>

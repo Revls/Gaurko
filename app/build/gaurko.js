@@ -1,15 +1,8 @@
-!function(){"use strict";
-var get = function (name){
-  var el = Em.$('[name="' + name + '"]')
-  return {
-    el: el,
-    content: el[0] ? el.attr('content') : null
-  }
+!function(){"use strict";const VERSION="9547142a";
+var Gaurko = window.Gk = window.Gaurko = Em.Application.create();
+Gaurko.deferReadiness();
 
-}
-
-var Gaurko =
-window.Gaurko = Em.Application.create({
+Gaurko.reopen({
   rootElement: '#gaurko',
   meta: Em.Object.create({
     token: get('ttoken'),
@@ -17,15 +10,15 @@ window.Gaurko = Em.Application.create({
     name: get('tname'),
     img: get('timg')
   }),
-  getByName: get,
   data: []
-});
+})
 
 Gaurko.ApplicationView = Em.View.extend({
   classNames: ['full'],
+  tagName: 'section',
   attributeBindings: ['data-tuktuk', 'id'],
   'data-tuktuk': 'boxes',
-  id: 'gaurkoapp'
+  id: 'gaurkoapp-' + VERSION
 })
 
 Gaurko.ApplicationController = Ember.Controller.extend({
@@ -63,10 +56,62 @@ Gaurko.ApplicationController = Ember.Controller.extend({
     }
   }
 }
+;function get(name){
+  var el = Em.$('[name="' + name + '"]')
+  return {
+    el: el,
+    content: el[0] ? el.attr('content') : null
+  }
+}
+
+Gaurko.Helpers = Gaurko.H = Em.Object.create({
+  get: get
+})
+;var Calendar = require('calendar')
+Gaurko.ItemType = Em.Object.create({
+  selected: 'income',
+  content: [
+    'income', 'outcome'
+  ]
+})
+
+Gaurko.CalendarView = Em.View.extend({
+  classNames: ['calendar'],
+  calendar: new Calendar().showMonthSelect().showYearSelect(),
+  click: function(e){
+    console.log(e)
+    window.evnt = e
+  },
+  selected: null,
+  change: function (val){
+    console.log('calendar did change + ', val)
+  }.property('selected'),
+  render: function (buffer){
+    var cal = this.get('calendar')
+    
+    cal.on('change', function(date){
+     console.log('selected: %s of %s %s',
+       date.getDate(),
+       date.getMonth(),
+       date.getFullYear())
+    })
+
+    buffer.push('<div> calendar </div>')
+  }
+})
+
+
 ;Gaurko.Router.map(function(){
-  this.resource('incomes')
-  this.resource('outcomes')
-  this.resource('all')
-  this.resource('item')
-});
-}()
+  this.resource('items', function (){
+    this.route('item', { path: ':item'})
+    this.route('new')
+  })
+})
+
+Gaurko.ApplicationRoute = Em.Route.extend({
+  redirect: function (){
+    return this.transitionTo('items.new')
+  }
+})
+
+Gaurko.advanceReadiness()}()

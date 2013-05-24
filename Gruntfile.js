@@ -1,8 +1,9 @@
 'use strict';
 
 module.exports = function(grunt) {
-  
+  var commit = require('fs').readFileSync('./.commit','utf8')  
   var path = require('path'), server
+  commit = commit.replace('\n','').substr(0, 8)
   // Project configuration.
   grunt.initConfig({
     watch:{
@@ -39,14 +40,16 @@ module.exports = function(grunt) {
       },
       dist: {
         options: {
-          banner: '!function(){"use strict";\n',
-          footer: '}()'
+          banner: '!function(){"use strict";const VERSION="' + commit + '";\n' 
+          + 'var Gaurko = window.Gk = window.Gaurko = Em.Application.create();\n'
+          + 'Gaurko.deferReadiness();\n\n',
+          footer: 'Gaurko.advanceReadiness()}()'
         },
-        src: ['app/scripts/app.js','app/scripts/**/*.js', '!app/scripts/templates.js'],
+        src: ['app/scripts/**/*.js','app/scripts/app.js', '!app/scripts/templates.js'],
         dest: 'app/build/gaurko.js'
       },
       all:{
-        src: ['app/vendor/**/*.js', 'app/scripts/**/*.js'],
+        src: ['app/vendor/**/*.js','app/build/build.js', 'app/build/gaurko.js'],
         dest: 'app/build/gaurko-all.js'
       },
       css: {
@@ -56,7 +59,9 @@ module.exports = function(grunt) {
         src: ['app/css/tuktuk.css',
           'app/css/tuktuk.icons.css',
           'app/css/tuktuk.theme.css',
-          'app/css/**/*.css'],
+          'app/css/**/*.css',
+          'app/build/build.css'
+          ],
         dest: 'app/build/gaurko.css'
       }
     }

@@ -65,7 +65,7 @@ helpers = helpers || Ember.Handlebars.helpers; data = data || {};
   var buffer = '', stack1, hashTypes, options, helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression;
 
 
-  data.buffer.push("<section role=\"main\" class=\"full\">\n");
+  data.buffer.push("<section class=\"full\">\n");
   hashTypes = {};
   options = {hash:{},contexts:[depth0],types:["STRING"],hashTypes:hashTypes,data:data};
   data.buffer.push(escapeExpression(((stack1 = helpers.partial),stack1 ? stack1.call(depth0, "header", options) : helperMissing.call(depth0, "partial", "header", options))));
@@ -86,7 +86,7 @@ helpers = helpers || Ember.Handlebars.helpers; data = data || {};
   
 
 
-  data.buffer.push("<section class=\"bck landing text center lowc full padding top\">\n    <div class=\"row\">\n      <div class=\"column_10 offset_1\">\n        <h1><strong>Gaur</strong>ko</h1>\n        <h2 class=\"margin-bottom\">Keep your daily finances on order</h2>\n      </div>\n    </div>\n    <div class=\"row\">\n         <div class=\"column_8 offset_2 form\">\n             <input type=\"email\" id=\"mail\" class=\"large on-left\" placeholder=\"Your email address\" style=\"width:81%\">\n             <button class=\"button large on-right\"><span class=\"icon envelope\"></span>Send</button>\n         </div>\n     </div>\n    <h5 class=\"text book\">don't worry, we hate spam too.</h5>\n</section>\n");
+  data.buffer.push("<section class=\"bck landing text center lowc full padding top\">\n    <div class=\"row\">\n      <div class=\"column_10 offset_1\">\n        <h1><strong>Gaur</strong>ko</h1>\n        <h2 class=\"margin-bottom\">Keep your daily finances in order</h2>\n      </div>\n    </div>\n    <div class=\"row\">\n         <div class=\"column_8 offset_2 form\">\n             <input type=\"email\" id=\"mail\" class=\"large on-left\" placeholder=\"Your email address\" style=\"width:81%\">\n             <button class=\"button large on-right\"><span class=\"icon envelope\"></span>Send</button>\n         </div>\n     </div>\n    <h5 class=\"text book\">don't worry, we hate spam too.</h5>\n</section>\n");
   
 });
 
@@ -209,5 +209,42 @@ helpers = helpers || Ember.Handlebars.helpers; data = data || {};
 
 
   data.buffer.push("<h2> click on the left </h2>\n");
+  
+});
+
+Ember.TEMPLATES["items/new"] = Ember.Handlebars.template(function anonymous(Handlebars,depth0,helpers,partials,data) {
+this.compilerInfo = [2,'>= 1.0.0-rc.3'];
+helpers = helpers || Ember.Handlebars.helpers; data = data || {};
+  var buffer = '', stack1, hashTypes, options, helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression;
+
+
+  data.buffer.push("<form id=\"form\" name=\"form\" class=\"margin-top\">\n  <label>Title</label>\n  ");
+  hashTypes = {'value': "ID"};
+  options = {hash:{
+    'value': ("title")
+  },contexts:[],types:[],hashTypes:hashTypes,data:data};
+  data.buffer.push(escapeExpression(((stack1 = helpers.input),stack1 ? stack1.call(depth0, options) : helperMissing.call(depth0, "input", options))));
+  data.buffer.push("\n\n  <fieldset>\n    <label>type:<small>Select option</small></label>\n    <span class=\"select\">\n      ");
+  hashTypes = {'contentBinding': "STRING",'valueBinding': "STRING"};
+  data.buffer.push(escapeExpression(helpers.view.call(depth0, "Ember.Select", {hash:{
+    'contentBinding': ("Gaurko.ItemType.content"),
+    'valueBinding': ("Gaurko.ItemType.selected")
+  },contexts:[depth0],types:["ID"],hashTypes:hashTypes,data:data})));
+  data.buffer.push("\n    </span>\n  </fieldset>\n\n  <fieldset>\n      <label>Amount:<small>in $USD</small></label>\n      ");
+  hashTypes = {'value': "ID",'type': "STRING",'name': "STRING",'id': "STRING"};
+  options = {hash:{
+    'value': ("amount"),
+    'type': ("number"),
+    'name': ("amount"),
+    'id': ("amount")
+  },contexts:[],types:[],hashTypes:hashTypes,data:data};
+  data.buffer.push(escapeExpression(((stack1 = helpers.input),stack1 ? stack1.call(depth0, options) : helperMissing.call(depth0, "input", options))));
+  data.buffer.push("\n  </fieldset>\n\n  <fieldset>\n      <label>Date:<small>Comments here</small></label>\n      ");
+  hashTypes = {'valueBinding': "ID"};
+  data.buffer.push(escapeExpression(helpers.view.call(depth0, "Gaurko.CalendarView", {hash:{
+    'valueBinding': ("selected")
+  },contexts:[depth0],types:["ID"],hashTypes:hashTypes,data:data})));
+  data.buffer.push("\n  </fieldset>\n\n  <fieldset>\n      <label>Switches<small>Touch lover</small></label>\n      <div data-control=\"checkbox\">\n          <input type=\"checkbox\" value=\"None\" id=\"prueba\">\n          <label for=\"prueba\"></label>\n      </div>\n  </fieldset>\n\n  <fieldset>\n      <label>Radio<small>buttons</small></label>\n      <input type=\"radio\" name=\"radio1\"><span>Yes</span>\n      <input type=\"radio\" name=\"radio2\" disabled=\"\"><span>No</span>\n  </fieldset>\n\n  <fieldset>\n      <label>Checkbox:<small>Styled</small></label>\n      <input type=\"checkbox\" name=\"radio1\"><span>One</span>\n      <input type=\"checkbox\" name=\"radio2\"><span>Two</span>\n  </fieldset>\n</form>\n");
+  return buffer;
   
 });

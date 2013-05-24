@@ -1,14 +1,4 @@
-var get = function (name){
-  var el = Em.$('[name="' + name + '"]')
-  return {
-    el: el,
-    content: el[0] ? el.attr('content') : null
-  }
-
-}
-
-var Gaurko =
-window.Gaurko = Em.Application.create({
+Gaurko.reopen({
   rootElement: '#gaurko',
   meta: Em.Object.create({
     token: get('ttoken'),
@@ -16,15 +6,15 @@ window.Gaurko = Em.Application.create({
     name: get('tname'),
     img: get('timg')
   }),
-  getByName: get,
   data: []
-});
+})
 
 Gaurko.ApplicationView = Em.View.extend({
   classNames: ['full'],
+  tagName: 'section',
   attributeBindings: ['data-tuktuk', 'id'],
   'data-tuktuk': 'boxes',
-  id: 'gaurkoapp'
+  id: 'gaurkoapp-' + VERSION
 })
 
 Gaurko.ApplicationController = Ember.Controller.extend({

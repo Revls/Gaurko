@@ -2,6 +2,7 @@
 <head>
   <title>Finanzas</title>
   <link rel="stylesheet" type="text/css" href="/build/gaurko.css">
+  <meta name="version" content="<%=pkg.commit%>">
   <% if (typeof user !== 'undefined'){ %>
   <meta name="ttoken" content="<%=user.token%>">
   <meta name="tuser" content="<%=user.username%>">
@@ -9,7 +10,7 @@
   <meta name="timg" content="<%=user._json.profile_image_url%>">
   <% } %>
 </head>
-<body role="main" data-tuktuk="boxes" id="gaurko">
+<body role="main" id="gaurko">
   <!--[if lt IE 9]>
       <script src="/vendor/jquery-1.9.1.js"></script>
   <![endif]-->
@@ -29,7 +30,7 @@
   <script type="text/javascript" src="/scripts/app.js"></script>
   // with Ember, jquery, all `grunt concat:all`
   -->
-  
+  <script type="text/javascript" src="/build/build.js"></script>
   <script type="text/javascript" src="/build/gaurko.js"></script>
   <!-- 
   <script type="text/javascript" src="/build/gaurko-all.js"></script>

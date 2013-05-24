@@ -1,6 +1,13 @@
 Gaurko.Router.map(function(){
-  this.resource('incomes')
-  this.resource('outcomes')
-  this.resource('all')
-  this.resource('item')
-});
+  this.resource('items', function (){
+    this.route('item', { path: ':item'})
+    this.route('new')
+  })
+})
+
+Gaurko.ApplicationRoute = Em.Route.extend({
+  redirect: function (){
+    return this.transitionTo('items.new')
+  }
+})
+

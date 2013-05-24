@@ -10,3 +10,8 @@
 section.padding.top {
   padding-top: 15%
 }
+button, .button {
+  text-transform: uppercase;
+  font-weight: bolder !important;
+  margin-left: -1px;
+}
